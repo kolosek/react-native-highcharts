@@ -13,7 +13,7 @@ const win = Dimensions.get("window");
 class ChartWeb extends Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       init: `<html>
                     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
@@ -27,27 +27,19 @@ class ChartWeb extends Component {
                         bottom:0;
                         position:absolute;
                         user-select: none;
+                        backgrouhd-color: green;
                         -webkit-user-select: none;
                     }
                     </style>
                     <head>
-                        <script src="./jquery.js"></script>
-                        ${
-                          this.props.stock
-                            ? '<script src="./highstock.js"></script>'
-                            : '<script src="./highcharts.js"></script>'
-                        }
-                        ${
-                          this.props.more
-                            ? '<script src="highcharts-more.js"></script>'
-                            : ""
-                        }
-                        ${
-                          this.props.guage
-                            ? '<script src="./solid-gauge.js"></script>'
-                            : ""
-                        }
-                        <script src="./exporting.js"></script>
+                              <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+                        ${this.props.stock ? '<script src="https://code.highcharts.com/stock/highstock.js"></script>'
+                                      : '<script src="https://code.highcharts.com/highcharts.js"></script>'}
+                        ${this.props.more ? '<script src="https://code.highcharts.com/highcharts-more.js"></script>'
+                                      : ''}
+                        ${this.props.guage ? '<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>'
+                                      : ''}
+                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
                         <script>
                         $(function () {
                             Highcharts.setOptions(${JSON.stringify(
@@ -63,6 +55,7 @@ class ChartWeb extends Component {
                     <body>
                         <div id="container">
                         </div>
+                        
                     </body>
                 </html>`,
       Wlayout: {
@@ -96,7 +89,7 @@ class ChartWeb extends Component {
         <WebView
           onLayout={this.reRenderWebView}
           style={styles.full}
-          source={{ html: concatHTML, baseUrl: "web/" }}
+          source={{ html: concatHTML, baseUrl: "/web" }}
           javaScriptEnabled={true}
           domStorageEnabled={true}
           scalesPageToFit={true}
