@@ -43,7 +43,7 @@ class ChartWeb extends Component {
                         <script>
                         $(function () {
                             Highcharts.setOptions(${JSON.stringify(
-                              this.props.options
+                              this.props.options ?? {}
                             )});
                             Highcharts.${
                               this.props.stock ? "stockChart" : "chart"
