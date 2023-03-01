@@ -89,7 +89,7 @@ class ChartWeb extends Component {
         <WebView
           onLayout={this.reRenderWebView}
           style={styles.full}
-          source={{ html: concatHTML, baseUrl: "/web" }}
+          source={{ html: concatHTML }}
           javaScriptEnabled={true}
           domStorageEnabled={true}
           scalesPageToFit={true}
